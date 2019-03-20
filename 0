@@ -1,0 +1,129 @@
+terminal / shell
+
+Functions of old operating systems which run on mainframes.
+Terminals, vt100.
+
+Terminal emulators: xterm.
+Terminal device files: /dev/pts/* /dev/tty*
+
+Sending message from one terminal to the other by writing in to device files by identifying the other terminal with 'w' and writing with 'echo'.
+
+/bin/login
+
+/bin/bash, /bin/fish
+
+.bashrc
+
+.bash_history (closing with x and ^d)
+
+Encodings: ASCII, ArmSCII-8, UTF-16, UTF-8.
+Soviet telegraph encoding.
+
+Terminal:
+/bin/login - the executable which implements login prompt.
+the terminal and the shell
+
+why we do use terminal and the shell?
+is terminal a modern or outdated concept?
+the paper, editing previously written commands.
+
+control characters.
+
+ctrl+g  BELL            007     07
+ctrl+h  BS              008     08
+ctrl+i  TAB             009     09
+ctrl+j  LF                      010     10
+ctrl+k  VT              011     0A
+ctrl+l  FF                      012     0B
+ctrl+m  CR              013     0D
+ctrl+z  SUB             026     16
+ctrl+[  ESC             027     17
+
+
+ctrl+?  DEL             127             7F
+
+Getting  familiar with Unix environment.
+Shell.
+File system navigation.
+., .., cd, pwd, relative and absolute paths.
+Basic programs from coreutils and util-linux package.
+
+Standard output, standard input, redirection.
+cp, mv, mc
+which - if that's an executable located in the file system.
+which echo
+
+cp /usr/share/doc/util-linux-2.31.1-r1/README.bz2 .
+bunzip README.bz2
+
+
+sed '' README
+
+cat README | sed
+
+printing
+
+sed 'p' README
+
+automatic print suppression
+
+sed -n 'p' README
+
+ranges
+
+sed -n '1p' README
+
+sed -n '1,5p' README
+
+range with offset
+
+sed -n '1,+4p' README
+
+sed -n '1,~2p' README
+
+delete
+
+sed '5d' tst
+sed '1~2d' README
+
+We no longer need the "-n" command because with the delete command, sed will print everything that is not deleted, which will help us see what's going on.
+
+substitute
+
+'s/old_word/new_word/'
+screening
+'s/https:\/\/google/http:\/\/duckduckgo/'
+
+
+sed -i
+
+
+
+regex
+
+
+^ beginning of line
+
+$ end of line
+
+a  matches a
+a. matches a0, ax, ao
+
+[a-z] matches all the letters from a to z
+
+seriali[sz]e matches both "serialise" and "serialize"
+
+Boolean "or"
+    A vertical bar separates alternatives. For example, gray|grey can match "gray" or "grey".
+
+Grouping
+    Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of "gray" or "grey".
+Quantification
+    A quantifier after a token (such as a character) or group specifies how often that a preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).
+
+    ? 	The question mark indicates zero or one occurrences of the preceding element. For example, colou?r matches both "color" and "colour".
+    * 	The asterisk indicates zero or more occurrences of the preceding element. For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on.
+    + 	The plus sign indicates one or more occurrences of the preceding element. For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac".
+    {n} 	The preceding item is matched exactly n times.
+    {min,} 	The preceding item is matched min or more times.
+    {min,max} 	The preceding item is matched at least min times, but not more than max times.
