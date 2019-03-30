@@ -1,10 +1,10 @@
 filesystem permissions
 chmod, chown, setuid, setgid, sticky bit.
-processes, ps aux, pstree.
+processes, ps aux, pstree, top.
 running process from the current directory.
+
 vi/vim
 man
-
 
 Environment variables
 
@@ -22,10 +22,13 @@ top
 
 Process exit status.
 echo $?
+  && ||
 
 Paths.
 
 source (sourcing) variables.
+. file
+source file
 
 shell
 ; && ||
@@ -102,6 +105,13 @@ echo "aaa" > /tmp/aaa
 ^d
 
 watch ls /tmp/
+echo 'echo "YAY" > /tmp/yay' | at now +1 minute
+watch cat /etc/yay
+
+difference between ' and "
+echo "$USER"
+echo '$USER'
+
 
 init process
 
